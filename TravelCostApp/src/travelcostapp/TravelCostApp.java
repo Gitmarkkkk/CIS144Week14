@@ -1,35 +1,60 @@
-
 package travelcostapp;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.Font;
+import java.awt.*;
 public class TravelCostApp {
-
-
+static JFrame jf;
+static JPanel p1;
+static JLabel TotMiles;
+static JLabel MPG;
+static JLabel PPG;
+static JLabel PF;
+static JLabel TF;
+static JLabel R;
+static JTextField NumA;
+static JTextField NumB;
+static JTextField NumC;
+static JTextField NumD;
+static JTextField NumEE;
+static JTextField NumR;
+static JButton BTN;
+static JButton BTN2;
     public static void main(String[] args) {
-        JFrame jf = new JFrame();
-        JPanel p1 = new JPanel();
+        Font TNR = new Font("Times New Roman", Font.BOLD, 40);
+        Font CS = new Font("Comic Sans", Font.PLAIN, 20);
+        jf = new JFrame("CIS144-GUI APP");
+        p1 = new JPanel();
         p1.setLayout(null);
-        JLabel title = new JLabel("Travel Cost App");
-        String underline = "\u001B[4m";
-        String reset = "\u001B[0m";
-        Font TNR = new Font("Times New Roman", Font.BOLD, 30);
-        title.setFont(TNR);
-        JLabel newtitle = new JLabel(underline + title + reset);
+        JLabel title = new JLabel("<html><u>Travel Cost App</u></html>");
+        TotMiles=new JLabel("Enter Total Miles Drive: ");
+        MPG=new JLabel("Enter Average Miles Per Gallon: ");
+        PPG;
         
-        title.setBounds(70,40,220,40);
-        newtitle.setBounds(70,80,220,40);
+        R=new JLabel("RESULT : ");
+        
+        title.setFont(TNR);
+        
+        title.setBounds(100,40,600,50);
         
         p1.add(title);
-        p1.add(newtitle);
         jf.add(p1);
           
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setResizable(true);
-        jf.setSize(300, 300);
+        jf.setSize(450, 600);
         jf.setLocation(350,100);
         jf.setVisible(true);
+        
     }
-    
+    public static class Calculation implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            double a = Double.parseDouble(NumA.getText());
+            double b = Double.parseDouble(NumB.getText());
+            double c = Double.parseDouble(NumC.getText());
+            double d = Double.parseDouble(NumD.getText());
+            double ee = Double.parseDouble(NumEE.getText());
+            NumR.setText("Calculated Cost: " + (c*(a/b) + d + ee));
+        }
+    }
 }
